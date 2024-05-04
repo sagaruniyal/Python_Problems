@@ -1,0 +1,45 @@
+#Question 15 Next Permutation
+
+#31. Next Permutation 
+
+# Optimized approach
+# 1. longer prefix match a[i]<a[i+1]
+# 2. find > A , but the smallest one so that you stay close
+# 3. Try to place remaining in sorted array 
+
+def nextGreaterPermutation(nums):
+    ind=-1
+    n = len(nums)
+    # From back to front, find the first number[i] < nums[i + 1].
+    for i in range(n-2,-1,-1):
+        if(nums[i]<nums[i+1]):
+            ind=i
+            break
+        
+    if(ind == -1):
+        nums=nums[::-1]
+        return nums
+    
+    # find > A , but the smallest one so that you stay close
+    for i in range(n-1,ind,-1):
+        if(nums[i]>nums[ind]):
+            nums[i],nums[ind]=nums[ind],nums[i]
+            break
+
+    # Try to place remaining in sorted array 
+    reverse(nums,ind+1,n-1)
+
+    return nums
+
+def reverse(nums,l,r):
+    while(l<r):
+        nums[l],nums[r]=nums[r],nums[l]
+        l+=1
+        r-=1  
+
+nums=[2,1,5,4,3,0,0]
+# output:- [2, 3, 0, 0, 1, 4, 5]
+
+# nums=[5,4,3,2,1]
+# output:- [1,2,3,4,5]
+print(nextGreaterPermutation(nums))  
