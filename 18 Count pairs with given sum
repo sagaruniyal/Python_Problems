@@ -1,0 +1,21 @@
+Question 18 Count pairs with given sum
+
+# Type 2 Count pairs with given sum
+def twosum(nums,target):
+    mapping={}
+    cnt=0
+    for index in range(len(nums)):
+        diff=target-nums[index]
+        if diff in mapping:
+            cnt+=mapping[diff]
+        mapping[nums[index]]= mapping.get(nums[index], 0) + 1  #default value .get will set 0 otherwise same value what it get
+    return cnt
+# nums = [2, 7, 11, 15]
+# target = 9
+# expected output 1
+nums = [1, 1, 1, 1]
+target = 2
+# expected output 6
+print(twosum(nums,target))
+# Space: O(N)
+# Time: O(N)
