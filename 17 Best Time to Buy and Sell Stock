@@ -1,0 +1,25 @@
+Question 17 Best Time to Buy and Sell Stock
+
+121. Best Time to Buy and Sell Stock
+
+#optimized approach using Dp on stocks
+
+def Maxprofit(prices):
+    mini=prices[0]
+    maxProfit=0
+    n=len(prices)
+    for i in range(1,n):
+        cost=prices[i]-mini
+        maxProfit=max(maxProfit,cost)
+        mini= min(mini,prices[i])
+    
+    return maxProfit
+    
+prices=[7,1,5,3,6,4]
+# Output: 5
+# prices = [7,6,4,3,1]
+# Output: 0
+print(Maxprofit(prices))
+
+# Time:  O(n) 
+# Space: O(1)
