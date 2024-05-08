@@ -1,1 +1,50 @@
 
+#Approach Order matter
+
+def rightRotataAnArray(arr,n,start,end):
+    last_element  = arr[end];
+    
+    for i in range(end,start,-1):
+        arr[i] = arr[i-1]
+    
+    
+    arr[start] = last_element
+
+def rearrange(arr,n):
+  
+#   logic without using extra space
+    
+    for i in range(0,n):
+        
+        if(i%2==0 and arr[i]>=0):
+            
+            j = i+1
+            
+            while(j<n and arr[j]>=0):
+                j+=1
+            
+            
+            if(j<n):
+                rightRotataAnArray(arr,n,i,j)
+            
+            
+        
+        elif(i%2==1 and arr[i]<0):
+            
+            j = i+1
+            
+            while(j<n and arr[j]<0):
+                j+=1
+            
+            
+            if(j<n):
+                rightRotataAnArray(arr,n,i,j)
+    return arr
+   
+arr = [1, 2, 3, -4, -1, 4]
+# Output: [-4, 1, -1, 2, 3, 4]
+
+print(rearrange(arr,len(arr)))
+
+# Time Complexity: O(n)
+# Space Complexity: O(1)
