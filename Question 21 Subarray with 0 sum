@@ -1,0 +1,22 @@
+#Question 21 Subarray with 0 sum
+
+#Subarray with 0 sum
+def subArrayExists(arr):
+    dic={}
+    sum=0
+    for i in range(len(arr)):
+     sum=sum+arr[i]
+     if(arr[i]==0 or sum==0 or sum in dic):
+        return 'Yes'
+     else:
+        dic[sum]=1
+    return 'No'
+# arr=[4,2,-3,1,6]
+# Expected output : Yes
+arr=[6,-10,-4,-6]
+# Expected output : No
+# arr= [int(x) for x in input("Enter Element of Array:").split()]  
+print(arr) 
+print(subArrayExists(arr))
+# Time Complexity: O(n)
+# Space Complexity: O(n)
